@@ -23,15 +23,15 @@ class DetailViewController: UIViewController {
 			self.title = detail.title
 			
 			let viewController = detail.viewController
-			self.addChildViewController(viewController)
+            self.addChild(viewController)
 			viewController.view.translatesAutoresizingMaskIntoConstraints = false
 			viewController.view.frame = self.view.bounds
 			self.view.addSubview(viewController.view)
 			
-			self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0))
-			self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0.0))
-			self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0.0))
-			self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutConstraint.Attribute.top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutConstraint.Attribute.left, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: viewController.view, attribute: NSLayoutConstraint.Attribute.right, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0))
 		}
 	}
 

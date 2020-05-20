@@ -11,11 +11,11 @@ public protocol PrunableBinarySearchTreeType : BinarySearchTreeType {
 }
 
 extension PrunableBinarySearchTreeType {
-    final public func remove(_ element: Element) -> Self {
+    public func remove(_ element: Element) -> Self {
 		return self.removeAndReturnExisting(element).0
 	}
 	
-	final public mutating func removeInPlace(_ element: Element) -> Element? {
+    public mutating func removeInPlace(_ element: Element) -> Element? {
 		let removedElement: Element?
 		(self, removedElement) = self.removeAndReturnExisting(element)
 		return removedElement

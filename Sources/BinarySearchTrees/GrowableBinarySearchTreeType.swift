@@ -11,11 +11,11 @@ public protocol GrowableBinarySearchTreeType : BinarySearchTreeType {
 }
 
 extension GrowableBinarySearchTreeType {
-	final public func insert(_ element: Element) -> Self {
+    public func insert(_ element: Element) -> Self {
 		return self.insertAndReturnExisting(element).0
 	}
 	
-	final public mutating func insertInPlace(_ element: Element) -> Element? {
+    public mutating func insertInPlace(_ element: Element) -> Element? {
 		let insertedElement: Element?
 		(self, insertedElement) = self.insertAndReturnExisting(element)
 		return insertedElement

@@ -15,7 +15,7 @@ public protocol BinaryTreeType : CustomStringConvertible, CustomDebugStringConve
 }
 
 extension BinaryTreeType {
-	final public var element: Element? {
+    public var element: Element? {
 		return analysis(branch: { _, element, _ in
 			element
 		}, leaf: {
@@ -23,7 +23,7 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final public var left: Self? {
+    public var left: Self? {
 		return analysis(branch: { left, _, _ in
 			return (left.isNil) ? nil : left
 		}, leaf: {
@@ -31,7 +31,7 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final public var right: Self? {
+    public var right: Self? {
 		return analysis(branch: { _, _, right in
 			return (right.isNil) ? nil : right
 		}, leaf: {
@@ -39,7 +39,7 @@ extension BinaryTreeType {
 		})
 	}
 
-    final public func preorder(_ closure: (Element) -> ()) {
+    public func preorder(_ closure: (Element) -> ()) {
         self.analysis(branch: { (l, e, r) -> () in
             closure(e)
             l.preorder(closure)
@@ -47,7 +47,7 @@ extension BinaryTreeType {
         }, leaf: {})
     }
 
-    final public func inorder(_ closure: (Element) -> ()) {
+    public func inorder(_ closure: (Element) -> ()) {
         self.analysis(branch: { (l, e, r) -> () in
             l.inorder(closure)
             closure(e)
@@ -55,7 +55,7 @@ extension BinaryTreeType {
         }, leaf: {})
     }
 
-    final public func postorder(_ closure: (Element) -> ()) {
+    public func postorder(_ closure: (Element) -> ()) {
         self.analysis(branch: { (l, e, r) -> () in
             l.postorder(closure)
             r.postorder(closure)
@@ -63,7 +63,7 @@ extension BinaryTreeType {
         }, leaf: {})
     }
 
-	final public var height: Int8 {
+    public var height: Int8 {
 		return analysis(branch: { l, _, r in
 			Swift.max(l.height, r.height) + 1
 		}, leaf: {
@@ -71,7 +71,7 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final public var subtreeHeights: (Int, Int) {
+    public var subtreeHeights: (Int, Int) {
 		return analysis(branch: { l, _, r in
 			(Int(r.height), Int(l.height))
 		}, leaf: {
@@ -79,15 +79,15 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final public var balance: Int {
+    public var balance: Int {
 		return analysis(branch: { l, _, r in
-			r.height - l.height
+            Int(r.height - l.height)
 		}, leaf: {
 			0
 		})
 	}
 	
-	final public var count: Int {
+    public var count: Int {
 		return analysis(branch: { l, _, r in
 			l.count + 1 + r.count
 		}, leaf: {
@@ -95,11 +95,11 @@ extension BinaryTreeType {
 		})
 	}
 
-	final public var isEmpty: Bool {
+    public var isEmpty: Bool {
 		return self.isNil
 	}
 	
-	final public var isNil: Bool {
+    public var isNil: Bool {
 		return analysis(branch: { _, _, _ in
 			false
 		}, leaf: {
@@ -107,13 +107,13 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final func clear() -> Self {
+    func clear() -> Self {
 		return Self()
 	}
 
-	final public func generate() -> AnyIterator<Element> {
+    public func generate() -> AnyIterator<Element> {
 		var stack: [Self] = [self]
-		return AnyIterator { _ -> Element? in
+        return AnyIterator { 
 			var current = stack.removeLast()
 			while true {
 				if current.isNil {
@@ -137,7 +137,7 @@ extension BinaryTreeType {
 		}
 	}
 	
-	final public func traverseLeftwards(_ closure: (Self) -> ()) -> Self {
+    public func traverseLeftwards(_ closure: (Self) -> ()) -> Self {
 		closure(self)
 		return analysis(branch: { l, _, _ in
 			l.traverseLeftwards(closure)
@@ -146,7 +146,7 @@ extension BinaryTreeType {
 		})
 	}
 	
-	final public func traverseRightwards(_ closure: (Self) -> ()) -> Self {
+    public func traverseRightwards(_ closure: (Self) -> ()) -> Self {
 		closure(self)
 		return analysis(branch: { _, _, r in
 			r.traverseRightwards(closure)
@@ -155,7 +155,7 @@ extension BinaryTreeType {
 		})
 	}
 
-	final public func leftmostBranch() -> Self {
+    public func leftmostBranch() -> Self {
 		var node = self
 		let _ = traverseLeftwards {
 			if !$0.isNil {
@@ -165,7 +165,7 @@ extension BinaryTreeType {
 		return node
 	}
 	
-	final public func rightmostBranch() -> Self {
+    public func rightmostBranch() -> Self {
 		var node = self
         let _ = traverseRightwards {
 			if !$0.isNil {
@@ -175,11 +175,11 @@ extension BinaryTreeType {
 		return node
 	}
 
-	final public func recursiveDescription(_ closure: @escaping (Self) -> String?) -> String {
+    public func recursiveDescription(_ closure: @escaping (Self) -> String?) -> String {
 		return self.recursiveDescription("", flag: false, closure: closure)
 	}
 	
-	final fileprivate func recursiveDescription(_ string: String, flag: Bool, closure: @escaping (Self) -> String?) -> String {
+    fileprivate func recursiveDescription(_ string: String, flag: Bool, closure: @escaping (Self) -> String?) -> String {
 		var recursiveDescription : ((Self, String, Bool) -> String)! = nil
 		recursiveDescription = { node, prefix, isTail in
 			var string = ""
@@ -197,11 +197,11 @@ extension BinaryTreeType {
 		return recursiveDescription(self, "", false)
 	}
 
-	final public var description: String {
+    public var description: String {
 		return self.recursiveDescription { return $0.analysis(branch: { _, e, _ in "\(e)" }, leaf: { nil }) }
 	}
 
-	final public var debugDescription: String {
+    public var debugDescription: String {
 		return self.recursiveDescription { return $0.analysis(branch: { _, e, _ in "\(e)" }, leaf: { "nil" }) }
 	}
 }

@@ -12,8 +12,8 @@ public enum BinaryTreeStepType {
     case rightBranch
 }
 
-public protocol BinarySearchTreeType : BinaryTreeType, ExpressibleByArrayLiteral {
-	associatedtype Element: Comparable
+public protocol BinarySearchTreeType : BinaryTreeType, ExpressibleByArrayLiteral where Element: Comparable {
+    
 
 	init<S: Sequence>(sortedSequence: S) where S.Iterator.Element == Element
 }
@@ -27,11 +27,11 @@ extension BinarySearchTreeType {
 		self.init(sequence: elements)
 	}
 	
-	final public mutating func clearInPlace() {
+    public mutating func clearInPlace() {
 		self = self.clear()
 	}
 	
-	final public func get(_ element: Element) -> Element? {
+    public func get(_ element: Element) -> Element? {
 		return analysis(branch: { l, e, r in
 			if element < e {
 				return l.get(element)
@@ -45,7 +45,7 @@ extension BinarySearchTreeType {
 		})
 	}
 	
-	final public func contains(_ element: Element) -> Bool {
+    public func contains(_ element: Element) -> Bool {
 		return self.get(element) != nil
 	}
 }
