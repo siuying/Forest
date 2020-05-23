@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Vincent Esche. All rights reserved.
 //
 
-public protocol BinaryTreeType : CustomStringConvertible, CustomDebugStringConvertible, Equatable {
+public protocol BinaryTreeType : CustomStringConvertible, CustomDebugStringConvertible, Equatable, Sequence {
 	associatedtype Element
 	
 	init()
@@ -111,7 +111,7 @@ extension BinaryTreeType {
 		return Self()
 	}
 
-    public func generate() -> AnyIterator<Element> {
+    public func makeIterator() -> AnyIterator<Element> {
 		var stack: [Self] = [self]
         return AnyIterator { 
 			var current = stack.removeLast()

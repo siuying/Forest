@@ -53,6 +53,9 @@
                <Test
                   Identifier = "BinaryTreeTests">
                </Test>
+               <Test
+                  Identifier = "RBTreeTests">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

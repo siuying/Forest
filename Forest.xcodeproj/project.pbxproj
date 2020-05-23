@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		543179E42474EDB800C86B19 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543179E22474EDB800C86B19 /* Quick.framework */; };
 		543179E52474EDB800C86B19 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543179E32474EDB800C86B19 /* Nimble.framework */; };
+		548DAC732478D7080044BA88 /* TreeMapEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DAC722478D7080044BA88 /* TreeMapEntry.swift */; };
+		548DAC752478D7560044BA88 /* TreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DAC742478D7560044BA88 /* TreeMap.swift */; };
+		548DAC792478E4180044BA88 /* RBTreeMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DAC772478E3B70044BA88 /* RBTreeMapTests.swift */; };
 		A421BD8B1A9CCB320032CF28 /* Forest.h in Headers */ = {isa = PBXBuildFile; fileRef = A421BD8A1A9CCB320032CF28 /* Forest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A421BD911A9CCB320032CF28 /* Forest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A421BD851A9CCB320032CF28 /* Forest.framework */; };
 		A480449D1B740806002452BA /* BinaryTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480449C1B740806002452BA /* BinaryTreeTests.swift */; };
@@ -109,6 +112,9 @@
 /* Begin PBXFileReference section */
 		543179E22474EDB800C86B19 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
 		543179E32474EDB800C86B19 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
+		548DAC722478D7080044BA88 /* TreeMapEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeMapEntry.swift; sourceTree = "<group>"; };
+		548DAC742478D7560044BA88 /* TreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeMap.swift; sourceTree = "<group>"; };
+		548DAC772478E3B70044BA88 /* RBTreeMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBTreeMapTests.swift; sourceTree = "<group>"; };
 		A41B30AF1AE55DA100898A35 /* RBTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RBTreeTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A421BD851A9CCB320032CF28 /* Forest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A421BD891A9CCB320032CF28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,6 +200,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		548DAC712478D6F50044BA88 /* TreeMap */ = {
+			isa = PBXGroup;
+			children = (
+				548DAC722478D7080044BA88 /* TreeMapEntry.swift */,
+				548DAC742478D7560044BA88 /* TreeMap.swift */,
+			);
+			path = TreeMap;
+			sourceTree = "<group>";
+		};
+		548DAC762478E3A50044BA88 /* TreeMap */ = {
+			isa = PBXGroup;
+			children = (
+				548DAC772478E3B70044BA88 /* RBTreeMapTests.swift */,
+			);
+			name = TreeMap;
+			sourceTree = "<group>";
+		};
 		A404111B1B9E66B2002452BA /* BinaryTrees */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +280,7 @@
 		A421BD941A9CCB320032CF28 /* ForestTests */ = {
 			isa = PBXGroup;
 			children = (
+				548DAC762478E3A50044BA88 /* TreeMap */,
 				A404111B1B9E66B2002452BA /* BinaryTrees */,
 				A48044A51B740FAC002452BA /* Frameworks */,
 				A421BD951A9CCB320032CF28 /* Supporting Files */,
@@ -336,6 +360,7 @@
 		BFA5F5F31D22DB66001A9307 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				548DAC712478D6F50044BA88 /* TreeMap */,
 				BFA5F5F41D22DB66001A9307 /* BinarySearchTrees */,
 				BFA5F5FB1D22DB66001A9307 /* BinaryTrees */,
 				BF3C50171E3000E4005569E1 /* Extensions */,
@@ -556,11 +581,13 @@
 				BFA5F60F1D22DB66001A9307 /* GrowableBinarySearchTreeType.swift in Sources */,
 				BFA5F60D1D22DB66001A9307 /* AVLTree.swift in Sources */,
 				BFA5F6181D22DB66001A9307 /* CountableRange+Extensions.swift in Sources */,
+				548DAC752478D7560044BA88 /* TreeMap.swift in Sources */,
 				BFA5F6111D22DB66001A9307 /* RBTree.swift in Sources */,
 				BFA5F6161D22DB66001A9307 /* BinaryTreeType.swift in Sources */,
 				BFA5F60E1D22DB66001A9307 /* BinarySearchTreeType.swift in Sources */,
 				BFA5F6131D22DB66001A9307 /* BinaryTree.swift in Sources */,
 				BFA5F6121D22DB66001A9307 /* PrunableBinarySearchTreeType.swift in Sources */,
+				548DAC732478D7080044BA88 /* TreeMapEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +597,7 @@
 			files = (
 				A480449D1B740806002452BA /* BinaryTreeTests.swift in Sources */,
 				A48044A81B7429EA002452BA /* AVLTreeTests.swift in Sources */,
+				548DAC792478E4180044BA88 /* RBTreeMapTests.swift in Sources */,
 				A48044A91B7429EA002452BA /* RBTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
