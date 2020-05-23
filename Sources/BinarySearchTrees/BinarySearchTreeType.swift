@@ -48,4 +48,38 @@ extension BinarySearchTreeType {
     public func contains(_ element: Element) -> Bool {
 		return self.get(element) != nil
 	}
+
+    public func lower(_ element: Element) -> Element? {
+        return analysis(branch: { l, e, r in
+            if element > e {
+                if let next = r.lower(element) {
+                    return next
+                } else {
+                    return e
+                }
+            } else {
+                return l.lower(element)
+            }
+        }, leaf: {
+            nil
+        })
+    }
+
+    public func floor(_ element: Element) -> Element? {
+        return analysis(branch: { l, e, r in
+            if element > e {
+                if let next = r.floor(element) {
+                    return next
+                } else {
+                    return e
+                }
+            } else if element == e {
+                return e
+            } else {
+                return l.floor(element)
+            }
+        }, leaf: {
+            nil
+        })
+    }
 }

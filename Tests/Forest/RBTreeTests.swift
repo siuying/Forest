@@ -64,6 +64,9 @@ class RBTreeTests: BinaryTreeTests {
 		self.describe_insert()
 		self.describe_remove()
 		self.describe_isValid()
+
+        self.describe_lower()
+        self.describe_floor()
 	}
 	
 	func describe_creatingWithSequence() {
@@ -459,4 +462,41 @@ class RBTreeTests: BinaryTreeTests {
 		}
 	}
 
+    func describe_lower() {
+        typealias Tree = RBTree<Int>
+        describe("lower should return elements smaller than given element") {
+            context("from sequence") {
+                let tree = Tree(sequence: [1, 3, 5, 7, 9])
+
+                it("it return smaller than number") {
+                    expect(tree.lower(4)).to(equal(3))
+                    expect(tree.lower(13)).to(equal(9))
+                    expect(tree.lower(3)).to(equal(1))
+                }
+
+                it("it return nil when no smaller number found") {
+                    expect(tree.lower(0)).to(beNil())
+                }
+            }
+        }
+    }
+
+    func describe_floor() {
+        typealias Tree = RBTree<Int>
+        describe("floor should return elements smaller than or equal to given element") {
+            context("from sequence") {
+                let tree = Tree(sequence: [1, 3, 5, 7, 9])
+
+                it("it return smaller than number") {
+                    expect(tree.floor(4)).to(equal(3))
+                    expect(tree.floor(13)).to(equal(9))
+                    expect(tree.floor(3)).to(equal(3))
+                }
+
+                it("it return nil when no smaller number found") {
+                    expect(tree.floor(0)).to(beNil())
+                }
+            }
+        }
+    }
 }
